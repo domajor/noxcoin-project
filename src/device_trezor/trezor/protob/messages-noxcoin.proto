@@ -1,0 +1,502 @@
+syntax = "proto2";
+package hw.trezor.messages.noxcoin;
+
+// Sugar for easier handling in Java
+option java_package = "com.satoshilabs.trezor.lib.protobuf";
+option java_outer_classname = "TrezorMessageNoxcoin";
+
+enum NoxcoinNetworkType {
+    MAINNET = 0;
+    TESTNET = 1;
+    STAGENET = 2;
+    FAKECHAIN = 3;
+}
+
+/**
+ * Structure representing Noxcoin transaction source entry, UTXO
+ * @embed
+ */
+message NoxcoinTransactionSourceEntry {
+    repeated NoxcoinOutputEntry outputs = 1;  // all outputs including decoys (forms the ring)
+    optional uint64 real_output = 2;  // index denoting which item in `outputs` is our real output (not a decoy)
+    optional bytes real_out_tx_key = 3;  // tx key located in the real output's tx
+    repeated bytes real_out_additional_tx_keys = 4;  // additional tx keys if applicable
+    optional uint64 real_output_in_tx_index = 5;  // index of our real output in the tx (aka which output was it in the transaction)
+    optional uint64 amount = 6;
+    optional bool rct = 7;  // is RingCT used (true for newer UTXOs)
+    optional bytes mask = 8;
+    optional NoxcoinMultisigKLRki multisig_kLRki = 9;
+    optional uint32 subaddr_minor = 10;  // minor subaddr index UTXO was sent to
+    message NoxcoinOutputEntry {
+        optional uint64 idx = 1;
+        optional NoxcoinRctKeyPublic key = 2;
+        message NoxcoinRctKeyPublic {
+            required bytes dest = 1;
+            required bytes commitment = 2;
+        }
+    }
+    message NoxcoinMultisigKLRki {
+        optional bytes K = 1;
+        optional bytes L = 2;
+        optional bytes R = 3;
+        optional bytes ki = 4;
+    }
+}
+
+/**
+ * Structure representing Noxcoin transaction destination entry
+ * @embed
+ */
+message NoxcoinTransactionDestinationEntry {
+    optional uint64 amount = 1;
+    optional NoxcoinAccountPublicAddress addr = 2;
+    optional bool is_subaddress = 3;
+    optional bytes original = 4;
+    optional bool is_integrated = 5;
+    /**
+     * Structure representing Noxcoin public address
+     */
+    message NoxcoinAccountPublicAddress {
+        optional bytes spend_public_key = 1;
+        optional bytes view_public_key = 2;
+    }
+}
+
+/**
+ * Range sig parameters / data.
+ * @embed
+ */
+message NoxcoinTransactionRsigData {
+    optional uint32 rsig_type = 1;  // range signature (aka proof) type
+    optional uint32 offload_type = 2;
+    repeated uint64 grouping = 3;  // aggregation scheme for BP
+
+    optional bytes mask = 4;       // mask vector
+    optional bytes rsig = 5;       // range sig data, all of it or partial (based on rsig_parts)
+    repeated bytes rsig_parts = 6;
+    optional uint32 bp_version = 7;  // Bulletproof version
+}
+
+/**
+ * Request: Ask device for public address derived from seed and address_n
+ * @start
+ * @next NoxcoinAddress
+ * @next Failure
+ */
+message NoxcoinGetAddress {
+    repeated uint32 address_n = 1;          // BIP-32 path to derive the key from master node
+    optional bool show_display = 2;         // Optionally show on display before sending the result
+    optional NoxcoinNetworkType network_type = 3 [default=MAINNET]; // Network type
+    optional uint32 account = 4;            // Major subaddr index
+    optional uint32 minor = 5;              // Minor subaddr index
+    optional bytes payment_id = 6;          // Payment ID for integrated address
+}
+
+/**
+ * Response: Contains Noxcoin watch-only credentials derived from device private seed
+ * @end
+ */
+message NoxcoinAddress {
+    optional bytes address = 1;
+}
+
+/**
+ * Request: Ask device for watch only credentials
+ * @start
+ * @next NoxcoinWatchKey
+ * @next Failure
+ */
+message NoxcoinGetWatchKey {
+    repeated uint32 address_n = 1;          // BIP-32 path to derive the key from master node
+    optional NoxcoinNetworkType network_type = 2 [default=MAINNET]; // Network type
+}
+
+/**
+ * Response: Contains Noxcoin watch-only credentials derived from device private seed
+ * @end
+ */
+message NoxcoinWatchKey {
+    optional bytes watch_key = 1;
+    optional bytes address = 2;
+}
+
+/**
+ * Request: Sub request of NoxcoinTransactionSign. Initializes transaction signing.
+ * @start
+ * @next NoxcoinTransactionInitAck
+ */
+message NoxcoinTransactionInitRequest {
+    optional uint32 version = 1;
+    repeated uint32 address_n = 2;
+    optional NoxcoinNetworkType network_type = 3 [default=MAINNET]; // Network type
+    optional NoxcoinTransactionData tsx_data = 4;
+    /**
+     * Structure representing Noxcoin initial transaction information
+     */
+    message NoxcoinTransactionData {
+        optional uint32 version = 1;
+        optional bytes payment_id = 2;
+        optional uint64 unlock_time = 3;
+        repeated NoxcoinTransactionDestinationEntry outputs = 4;
+        optional NoxcoinTransactionDestinationEntry change_dts = 5;
+        optional uint32 num_inputs = 6;
+        optional uint32 mixin = 7;
+        optional uint64 fee = 8;
+        optional uint32 account = 9;
+        repeated uint32 minor_indices = 10;
+        optional NoxcoinTransactionRsigData rsig_data = 11;
+        repeated uint32 integrated_indices = 12;
+        optional uint32 client_version = 13;  // connected client version
+        optional uint32 hard_fork = 14;       // transaction hard fork number
+        optional bytes noxcoin_version = 15;   // noxcoin software version
+    }
+}
+
+/**
+ * Response: Response to transaction signing initialization.
+ * @next NoxcoinTransactionSetInputRequest
+ */
+message NoxcoinTransactionInitAck {
+    repeated bytes hmacs = 1;
+    optional NoxcoinTransactionRsigData rsig_data = 2;
+}
+
+/**
+ * Request: Sub request of NoxcoinTransactionSign. Sends one UTXO to device
+ * @next NoxcoinTransactionSetInputAck
+ */
+message NoxcoinTransactionSetInputRequest {
+    optional NoxcoinTransactionSourceEntry src_entr = 1;
+}
+
+/**
+ * Response: Response to setting UTXO for signature. Contains sealed values needed for further protocol steps.
+ * @next NoxcoinTransactionSetInputAck
+ * @next NoxcoinTransactionInputViniRequest
+ */
+message NoxcoinTransactionSetInputAck {
+    optional bytes vini = 1;      // noxtypes.TxinToKey
+    optional bytes vini_hmac = 2;
+    optional bytes pseudo_out = 3;
+    optional bytes pseudo_out_hmac = 4;
+    optional bytes pseudo_out_alpha = 5;
+    optional bytes spend_key = 6;
+}
+
+/**
+ * Request: Sub request of NoxcoinTransactionSign. Sends one UTXO to device together with sealed values.
+ * @next NoxcoinTransactionInputViniAck
+ */
+message NoxcoinTransactionInputViniRequest {
+    optional NoxcoinTransactionSourceEntry src_entr = 1;
+    optional bytes vini = 2;      // noxtypes.TxinToKey
+    optional bytes vini_hmac = 3;
+    optional bytes pseudo_out = 4;
+    optional bytes pseudo_out_hmac = 5;
+    optional uint32 orig_idx = 6;  // original sort index, before sorting by key-images
+}
+
+/**
+ * Response: Response to setting UTXO to the device
+ * @next NoxcoinTransactionInputViniRequest
+ * @next NoxcoinTransactionAllInputsSetRequest
+ */
+message NoxcoinTransactionInputViniAck {
+}
+
+/**
+ * Request: Sub request of NoxcoinTransactionSign. Sent after all inputs have been sent. Useful for rangeisg offloading.
+ * @next NoxcoinTransactionAllInputsSetAck
+ */
+message NoxcoinTransactionAllInputsSetRequest {
+}
+
+/**
+ * Response: Response to after all inputs have been set.
+ * @next NoxcoinTransactionSetOutputRequest
+ */
+message NoxcoinTransactionAllInputsSetAck {
+    optional NoxcoinTransactionRsigData rsig_data = 1;
+}
+
+/**
+ * Request: Sub request of NoxcoinTransactionSign. Sends one transaction destination to device (HMACed)
+ * @next NoxcoinTransactionSetOutputAck
+ */
+message NoxcoinTransactionSetOutputRequest {
+    optional NoxcoinTransactionDestinationEntry dst_entr = 1;
+    optional bytes dst_entr_hmac = 2;
+    optional NoxcoinTransactionRsigData rsig_data = 3;
+    optional bool is_offloaded_bp = 4;  // Extra message, with offloaded BP.
+}
+
+/**
+ * Response: Response to setting transaction destination. Contains sealed values needed for further protocol steps.
+ * @next NoxcoinTransactionSetOutputRequest
+ * @next NoxcoinTransactionAllOutSetRequest
+ */
+message NoxcoinTransactionSetOutputAck {
+    optional bytes tx_out = 1;  // noxtypes.TxOut
+    optional bytes vouti_hmac = 2;
+    optional NoxcoinTransactionRsigData rsig_data = 3;
+    optional bytes out_pk = 4;
+    optional bytes ecdh_info = 5;
+}
+
+/**
+ * Request: Sub request of NoxcoinTransactionSign. Sent after all outputs are sent.
+ * @next NoxcoinTransactionAllOutSetAck
+ */
+message NoxcoinTransactionAllOutSetRequest {
+    optional NoxcoinTransactionRsigData rsig_data = 1;
+}
+
+/**
+ * Response: After all outputs are sent the initial RCT signature fields are sent.
+ * @next NoxcoinTransactionSignInputRequest
+ */
+message NoxcoinTransactionAllOutSetAck {
+    optional bytes extra = 1;
+    optional bytes tx_prefix_hash = 2;
+    optional NoxcoinRingCtSig rv = 4;  // noxtypes.RctSig
+    optional bytes full_message_hash = 5;
+
+    /*
+     * Structure represents initial fields of the Noxcoin RCT signature
+     */
+    message NoxcoinRingCtSig {
+        optional uint64 txn_fee = 1;
+        optional bytes message = 2;
+        optional uint32 rv_type = 3;
+    }
+}
+
+/**
+ * Request: Sub request of NoxcoinTransactionSign. Sends UTXO for the signing.
+ * @next NoxcoinTransactionSignInputAck
+ */
+message NoxcoinTransactionSignInputRequest {
+    optional NoxcoinTransactionSourceEntry src_entr = 1;
+    optional bytes vini = 2;     // noxtypes.TxinToKey
+    optional bytes vini_hmac = 3;
+    optional bytes pseudo_out = 4;
+    optional bytes pseudo_out_hmac = 5;
+    optional bytes pseudo_out_alpha = 6;
+    optional bytes spend_key = 7;
+    optional uint32 orig_idx = 8;  // original sort index, before sorting by key-images
+}
+
+/**
+ * Response: Contains full MG signature of the UTXO + multisig data if applicable.
+ * @next NoxcoinTransactionSignInputRequest
+ * @next NoxcoinTransactionFinalRequest
+ */
+message NoxcoinTransactionSignInputAck {
+    optional bytes signature = 1;
+    optional bytes pseudo_out = 2;  // updated pseudo-out after mask correction
+}
+
+/**
+ * Request: Sub request of NoxcoinTransactionSign. Final message of the procol after all UTXOs are signed
+ * @next NoxcoinTransactionFinalAck
+ */
+message NoxcoinTransactionFinalRequest {
+}
+
+/**
+ * Response: Contains transaction metadata and encryption keys needed for further transaction operations (e.g. multisig, send proof).
+ * @end
+ */
+message NoxcoinTransactionFinalAck {
+    optional bytes cout_key = 1;
+    optional bytes salt = 2;
+    optional bytes rand_mult = 3;
+    optional bytes tx_enc_keys = 4;
+    optional bytes opening_key = 5;  // enc master key to decrypt CLSAGs after protocol finishes correctly
+}
+
+/**
+ * Request: Sub request of NoxcoinKeyImageSync. Initializing key image sync.
+ * @start
+ * @next NoxcoinKeyImageExportInitAck
+ */
+message NoxcoinKeyImageExportInitRequest {
+    required uint64 num = 1;
+    required bytes hash = 2;
+    repeated uint32 address_n = 3;               // BIP-32 path to derive the key from master node
+    optional NoxcoinNetworkType network_type = 4 [default=MAINNET]; // network type
+    repeated NoxcoinSubAddressIndicesList subs = 5;
+    /**
+     * Structure representing Noxcoin list of sub-addresses
+     */
+    message NoxcoinSubAddressIndicesList {
+        required uint32 account = 1;
+        repeated uint32 minor_indices = 2;
+    }
+}
+
+/**
+ * Response: Response to key image sync initialization.
+ * @next NoxcoinKeyImageSyncStepRequest
+ */
+message NoxcoinKeyImageExportInitAck {
+}
+
+/**
+ * Request: Sub request of NoxcoinKeyImageSync. Contains batch of the UTXO to export key image for.
+ * @next NoxcoinKeyImageSyncStepAck
+ */
+message NoxcoinKeyImageSyncStepRequest {
+    repeated NoxcoinTransferDetails tdis = 1;
+    /**
+     * Structure representing Noxcoin UTXO for key image sync
+     */
+    message NoxcoinTransferDetails {
+        required bytes out_key = 1;
+        required bytes tx_pub_key = 2;
+        repeated bytes additional_tx_pub_keys = 3;
+        required uint64 internal_output_index = 4;
+        optional uint32 sub_addr_major = 5;
+        optional uint32 sub_addr_minor = 6;
+    }
+}
+
+/**
+ * Response: Response to key image sync step. Contains encrypted exported key image.
+ * @next NoxcoinKeyImageSyncStepRequest
+ * @next NoxcoinKeyImageSyncFinalRequest
+ */
+message NoxcoinKeyImageSyncStepAck {
+    repeated NoxcoinExportedKeyImage kis = 1;
+    /**
+     * Structure representing Noxcoin encrypted exported key image
+     */
+    message NoxcoinExportedKeyImage {
+        optional bytes iv = 1;
+        optional bytes blob = 3;
+    }
+}
+
+/**
+ * Request: Sub request of NoxcoinKeyImageSync. Final message of the sync protocol.
+ * @next NoxcoinKeyImageSyncFinalAck
+ */
+message NoxcoinKeyImageSyncFinalRequest {
+}
+
+/**
+ * Response: Response to key image sync step. Contains encryption keys for exported key images.
+ * @end
+ */
+message NoxcoinKeyImageSyncFinalAck {
+    optional bytes enc_key = 1;
+}
+
+/**
+ * Request: Decrypt tx private keys blob
+ * @next NoxcoinGetTxKeyAck
+ */
+message NoxcoinGetTxKeyRequest {
+    repeated uint32 address_n = 1;          // BIP-32 path to derive the key from master node
+    optional NoxcoinNetworkType network_type = 2 [default=MAINNET]; // network type
+
+    required bytes salt1 = 3;
+    required bytes salt2 = 4;
+    required bytes tx_enc_keys = 5;
+    required bytes tx_prefix_hash = 6;
+    optional uint32 reason = 7;  // reason to display for user. e.g., tx_proof
+    optional bytes view_public_key = 8;   // addr for derivation
+}
+
+/**
+ * Response: Response with the re-encrypted private keys and derivations blob under view key
+ * @end
+ */
+message NoxcoinGetTxKeyAck {
+    optional bytes salt = 1;
+    optional bytes tx_keys = 2;
+    optional bytes tx_derivations = 3;
+}
+
+/**
+ * Request: Starts live refresh flow. Asks user permission, switches state
+ * @next NoxcoinLiveRefreshStartAck
+ */
+message NoxcoinLiveRefreshStartRequest {
+    repeated uint32 address_n = 1;          // BIP-32 path to derive the key from master node
+    optional NoxcoinNetworkType network_type = 2 [default=MAINNET]; // network type
+}
+
+/**
+ * Response after user gave permission
+ * @next NoxcoinLiveRefreshStepRequest
+ * @next NoxcoinLiveRefreshFinalRequest
+ */
+message NoxcoinLiveRefreshStartAck {
+
+}
+
+/**
+ * Request: Request to compute a single key image during live sync
+ * @next NoxcoinLiveRefreshStepAck
+ */
+message NoxcoinLiveRefreshStepRequest {
+    required bytes out_key = 1;
+    required bytes recv_deriv = 2;
+    required uint64 real_out_idx = 3;
+    required uint32 sub_addr_major = 4;
+    required uint32 sub_addr_minor = 5;
+}
+
+/**
+ * Response: Response with the encrypted key image + signature
+ * @next NoxcoinLiveRefreshStepRequest
+ * @next NoxcoinLiveRefreshFinishedRequest
+ */
+message NoxcoinLiveRefreshStepAck {
+    optional bytes salt = 1;
+    optional bytes key_image = 2;
+}
+
+/**
+ * Request: Request terminating live refresh mode.
+ * @next NoxcoinLiveRefreshFinishedAck
+ */
+message NoxcoinLiveRefreshFinalRequest {
+
+}
+
+/**
+ * Response: Response on termination of live refresh mode.
+ * @end
+ */
+message NoxcoinLiveRefreshFinalAck {
+
+}
+
+/**
+ * Request: Universal Noxcoin protocol implementation diagnosis request.
+ * @start
+ * @next DebugNoxcoinDiagAck
+ */
+message DebugNoxcoinDiagRequest {
+    optional uint64 ins = 1;
+    optional uint64 p1 = 2;
+    optional uint64 p2 = 3;
+    repeated uint64 pd = 4;
+    optional bytes data1 = 5;
+    optional bytes data2 = 6;
+}
+
+/**
+ * Response: Response to Noxcoin diagnosis protocol.
+ * @end
+ */
+message DebugNoxcoinDiagAck {
+    optional uint64 ins = 1;
+    optional uint64 p1 = 2;
+    optional uint64 p2 = 3;
+    repeated uint64 pd = 4;
+    optional bytes data1 = 5;
+    optional bytes data2 = 6;
+}
