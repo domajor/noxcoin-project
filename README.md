@@ -6,7 +6,7 @@
 - **Website:** https://noxcoin.org  
 - **Explorer:** https://explorer.noxcoin.org/  
 - **Mining Pool:** https://noxcoin.minorpool.com/  
-- **Discord:** https://discord.gg/z9ASXhjw
+- **Mining Pool: https://miningpoolstats.stream/noxcoin
 
 ---
 
@@ -31,7 +31,7 @@ git clone --recursive https://github.com/domajor/noxcoin
 cd noxcoin
 
 mkdir build && cd build
-cmake .. -DCMAKE_BUILD_TYPE=Release
+cmake .. -DCMAKE_BUILD_TYPE=Release -DMANUAL_SUBMODULES=1
 make -j$(nproc)
 ~~~
 Binaries will be in `build/release/bin`.
@@ -49,7 +49,7 @@ Binaries will be in `build/release/bin`.
 Install packages via the repo Brewfile, then build:
 ~~~bash
 brew update && brew bundle --file=contrib/brew/Brewfile
-make release"
+make release
 ~~~
 
 ### Windows (MSYS2 / MINGW64)
