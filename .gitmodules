@@ -1,0 +1,12 @@
+[submodule "external/trezor-common"]
+	path = external/trezor-common
+	url = https://github.com/trezor/trezor-common.git
+[submodule "external/miniupnp"]
+	path = external/miniupnp
+	url = https://github.com/miniupnp/miniupnp.git
+[submodule "external/rapidjson"]
+	path = external/rapidjson
+	url = https://github.com/Tencent/rapidjson.git
+[submodule "external/supercop"]
+	path = external/supercop
+	url = https://github.com/monero-project/supercop.git
