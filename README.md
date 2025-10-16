@@ -22,14 +22,17 @@
 
 ## Build (Linux)
 ~~~bash
-git clone --recursive https://github.com/domajor/noxcoin
-cd noxcoin
 sudo apt update && sudo apt install build-essential cmake pkg-config libssl-dev libzmq3-dev \
 libunbound-dev libsodium-dev libunwind8-dev liblzma-dev libreadline-dev libexpat1-dev \
 qttools5-dev-tools libhidapi-dev libusb-1.0-0-dev libprotobuf-dev protobuf-compiler \
 libudev-dev libboost-all-dev
-make release
-./build/release/bin/noxcoind --detach
+
+git clone --recursive https://github.com/domajor/noxcoin
+cd noxcoin
+
+mkdir build && cd build
+cmake .. -DCMAKE_BUILD_TYPE=Release
+make -j$(nproc)
 ~~~
 Binaries will be in `build/release/bin`.
 
