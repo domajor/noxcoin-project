@@ -52,7 +52,11 @@ using namespace epee;
 
 static const char *DEFAULT_DNS_PUBLIC_ADDR[] =
 {
-    "185.250.243.159", // Your Noxcoin daemon node
+    "185.250.241.159", // Primary wallet node
+    "93.184.156.45",   // Secondary wallet node
+    "2.56.245.17",     // Friend's wallet node
+    "minorpool.com",   // Pool domain
+    "go-poolmining.com" // Friend's pool domain
 };
 
 static boost::mutex instance_lock;

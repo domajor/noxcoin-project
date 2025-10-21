@@ -1,38 +1,64 @@
-# Noxcoin â€“ Private. Secure. Untraceable
- 
-**Noxcoin** is a fork of **Monero** â€” the most battle-tested privacy cryptocurrency â€” but with several distinct improvements and a new community-first direction. It retains Moneroâ€™s cryptographic strength while adjusting emission, scaling behavior, and decentralization incentives. 
+# Noxcoin – Private. Secure. Untraceable.
 
-## Links
-- **Website:** https://noxcoin.org  
-- **Explorer:** https://explorer.noxcoin.org/  
-- **Mining Pool:** https://noxcoin.minorpool.com/  
-- **Mining Pool: https://miningpoolstats.stream/noxcoin
+### Note from the Maintainer
+Hello!  
+This is a community revival of **Noxcoin** — all previous threats have been deleted and purged.  
+Please verify everything independently and use only trusted sources.  
 
----
+My goal is simple: to help this coin survive and grow into a secure, community-driven project.  
+I'm not an official developer — this project is open to everyone who wishes to help.  
 
-## Key Features
-- **Based on Monero Core** with proven privacy guarantees
-- **Privacy stack**: Ring Signatures, Stealth Addresses, RingCT, Bulletproofs+
-- **Fixed supply**: 21M NOX (no tail emission)
-- **Fast blocks**: 120 seconds
-- **Low fees**: 0.0000005 NOX/kB (~6Ã— cheaper than Monero)
-- **Fair mining & decentralization**: CPU-friendly RandomX
+> “The birth of a baby is very difficult, but what's even more difficult is keeping it alive and ensuring it grows into a valuable person.”
 
 ---
 
-## Build (Linux)
-~~~bash
-sudo apt update && sudo apt install build-essential cmake pkg-config libssl-dev libzmq3-dev \
+## ?? Project Links
+- **Website:** [https://noxcoin.org](https://noxcoin.org)  
+- **Explorer:** [https://explorer.noxcoin.org](https://explorer.noxcoin.org)  
+- **Mining Stats:** [https://miningpoolstats.stream/noxcoin](https://miningpoolstats.stream/noxcoin)  
+- **Discord:** [https://discord.gg/fgu34rYtrV](https://discord.gg/fgu34rYtrV)  
+- **Telegram:** [https://t.me/+O0mMgUg1qXM4OWI8](https://t.me/+O0mMgUg1qXM4OWI8)
+
+---
+
+## ?? Acknowledgments
+Special thanks to **Mr. Joachim Kipka** ([go-poolmining.com](https://go-poolmining.com)) for his technical help and support in rebuilding and maintaining the Noxcoin network.
+
+---
+
+## ?? About Noxcoin
+**Noxcoin** is a fork of **Monero**, the most battle-tested privacy cryptocurrency — rebuilt with a community-first vision.  
+It retains Monero’s strong cryptographic foundation while introducing new emission rules, scaling adjustments, and decentralization incentives.
+
+---
+
+## ?? Key Features
+- **Based on Monero Core** – Proven, privacy-focused architecture  
+- **Privacy stack:** Ring Signatures, Stealth Addresses, RingCT, Bulletproofs+  
+- **Fixed supply:** 21,000,000 NOX (no tail emission)  
+- **Fast blocks:** 120 seconds  
+- **Low fees:** 0.0000005 NOX/kB (~6× cheaper than Monero)  
+- **Fair mining:** CPU-friendly RandomX algorithm  
+- **Community-first governance:** No premine, no dev tax
+
+---
+
+## ?? Build Instructions
+
+### ?? Linux
+```bash
+sudo apt update && sudo apt install -y build-essential cmake pkg-config libssl-dev libzmq3-dev \
 libunbound-dev libsodium-dev libunwind8-dev liblzma-dev libreadline-dev libexpat1-dev \
 qttools5-dev-tools libhidapi-dev libusb-1.0-0-dev libprotobuf-dev protobuf-compiler \
-libudev-dev libboost-all-dev
+libudev-dev libboost-all-dev git
 
-git clone --recursive https://github.com/domajor/noxcoin
+git clone --recursive https://github.com/domajor/noxcoin-project.git noxcoin
 cd noxcoin
 
 mkdir build && cd build
 cmake .. -DCMAKE_BUILD_TYPE=Release -DMANUAL_SUBMODULES=1
 make -j$(nproc)
+
 ~~~
 Binaries will be in `build/release/bin`.
 
