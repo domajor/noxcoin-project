@@ -12,7 +12,7 @@ I'm not an official developer — this project is open to everyone who wishes to h
 
 ---
 
-## ?? Project Links
+##  Project Links
 - **Website:** [https://noxcoin.org](https://noxcoin.org)  
 - **Explorer:** [https://explorer.noxcoin.org](https://explorer.noxcoin.org)  
 - **Mining Stats:** [https://miningpoolstats.stream/noxcoin](https://miningpoolstats.stream/noxcoin)  
@@ -21,18 +21,18 @@ I'm not an official developer — this project is open to everyone who wishes to h
 
 ---
 
-## ?? Acknowledgments
-Special thanks to **Mr. Joachim Kipka** ([go-poolmining.com](https://go-poolmining.com)) for his technical help and support in rebuilding and maintaining the Noxcoin network.
+##  Acknowledgments
+Special thanks to **@aalnase** ([go-poolmining.com](https://go-poolmining.com)) for his technical help and support in rebuilding and maintaining the Noxcoin network.
 
 ---
 
-## ?? About Noxcoin
+##  About Noxcoin
 **Noxcoin** is a fork of **Monero**, the most battle-tested privacy cryptocurrency — rebuilt with a community-first vision.  
 It retains Monero’s strong cryptographic foundation while introducing new emission rules, scaling adjustments, and decentralization incentives.
 
 ---
 
-## ?? Key Features
+##  Key Features
 - **Based on Monero Core** – Proven, privacy-focused architecture  
 - **Privacy stack:** Ring Signatures, Stealth Addresses, RingCT, Bulletproofs+  
 - **Fixed supply:** 21,000,000 NOX (no tail emission)  
@@ -43,9 +43,9 @@ It retains Monero’s strong cryptographic foundation while introducing new emissi
 
 ---
 
-## ?? Build Instructions
+##  Build Instructions
 
-### ?? Linux
+###  Linux
 ```bash
 sudo apt update && sudo apt install -y build-essential cmake pkg-config libssl-dev libzmq3-dev \
 libunbound-dev libsodium-dev libunwind8-dev liblzma-dev libreadline-dev libexpat1-dev \
