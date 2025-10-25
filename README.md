@@ -13,11 +13,12 @@ I'm not an official developer — this project is open to everyone who wishes to h
 ---
 
 ##  Project Links
-- **Website:** [https://noxcoin.org](https://noxcoin.org)  
-- **Explorer:** [https://explorer.noxcoin.org](https://explorer.noxcoin.org)  
+- **Website:** [https://noxcoin.online/](https://noxcoin.online/)  
+- **Explorer:** [https://explorer.noxcoin.online/](https://explorer.noxcoin.online/)  
 - **Mining Stats:** [https://miningpoolstats.stream/noxcoin](https://miningpoolstats.stream/noxcoin)  
 - **Discord:** [https://discord.gg/fgu34rYtrV](https://discord.gg/fgu34rYtrV)  
 - **Telegram:** [https://t.me/+O0mMgUg1qXM4OWI8](https://t.me/+O0mMgUg1qXM4OWI8)
+- **Mining Stats:** [https://miningpoolstats.stream/noxcoin](https://miningpoolstats.stream/noxcoin)
 
 ---
 
@@ -45,8 +46,8 @@ It retains Monero’s strong cryptographic foundation while introducing new emissi
 
 ##  Build Instructions
 
-###  Linux
-```bash
+## Build (Linux)
+~~~bash
 sudo apt update && sudo apt install -y build-essential cmake pkg-config libssl-dev libzmq3-dev \
 libunbound-dev libsodium-dev libunwind8-dev liblzma-dev libreadline-dev libexpat1-dev \
 qttools5-dev-tools libhidapi-dev libusb-1.0-0-dev libprotobuf-dev protobuf-compiler \
@@ -60,7 +61,7 @@ cmake .. -DCMAKE_BUILD_TYPE=Release -DMANUAL_SUBMODULES=1
 make -j$(nproc)
 
 ~~~
-Binaries will be in `build/release/bin`.
+Binaries will be in `build/bin`.
 
 ### System Requirements
 - CPU with **AES-NI** (RandomX)
