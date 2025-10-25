@@ -1,6 +1,12 @@
-# Noxcoin – Private. Secure. Untraceable.
+<p align="center">
+  <img src="https://raw.githubusercontent.com/domajor/noxcoin-project/main/logo.png" alt="Noxcoin Logo" width="180"/>
+</p>
 
-### Note from the Maintainer
+# Noxcoin Project
+
+## Noxcoin – Private. Secure. Untraceable.
+
+### ?? Note from the Maintainer
 Hello!  
 This is a community revival of **Noxcoin** — all previous threats have been deleted and purged.  
 Please verify everything independently and use only trusted sources.  
@@ -12,13 +18,12 @@ I'm not an official developer — this project is open to everyone who wishes to h
 
 ---
 
-##  Project Links
-- **Website:** [https://noxcoin.online/](https://noxcoin.online/)  
-- **Explorer:** [https://explorer.noxcoin.online/](https://explorer.noxcoin.online/)  
+## ?? Project Links
+- **Website:** [https://noxcoin.online](https://noxcoin.online)  
+- **Explorer:** [https://explorer.noxcoin.online](https://explorer.noxcoin.online)  
 - **Mining Stats:** [https://miningpoolstats.stream/noxcoin](https://miningpoolstats.stream/noxcoin)  
 - **Discord:** [https://discord.gg/fgu34rYtrV](https://discord.gg/fgu34rYtrV)  
 - **Telegram:** [https://t.me/+O0mMgUg1qXM4OWI8](https://t.me/+O0mMgUg1qXM4OWI8)
-- **Mining Stats:** [https://miningpoolstats.stream/noxcoin](https://miningpoolstats.stream/noxcoin)
 
 ---
 
