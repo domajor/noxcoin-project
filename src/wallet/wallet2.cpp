@@ -1,5 +1,5 @@
 // Copyright (c) 2014-2025, The Monero Project
-// Copyright (c) 2025, The Noxcoin
+// Copyright (c) 2025, The NoxCoin
 // 
 // All rights reserved.
 // 
@@ -112,9 +112,9 @@ using namespace cryptonote;
 // used to target a given block weight (additional outputs may be added on top to build fee)
 #define TX_WEIGHT_TARGET(bytes) (bytes*2/3)
 
-#define UNSIGNED_TX_PREFIX "Noxcoin unsigned tx set\005"
-#define SIGNED_TX_PREFIX "Noxcoin signed tx set\005"
-#define MULTISIG_UNSIGNED_TX_PREFIX "Noxcoin multisig unsigned tx set\001"
+#define UNSIGNED_TX_PREFIX "NoxCoin unsigned tx set\005"
+#define SIGNED_TX_PREFIX "NoxCoin signed tx set\005"
+#define MULTISIG_UNSIGNED_TX_PREFIX "NoxCoin multisig unsigned tx set\001"
 
 #define RECENT_OUTPUT_RATIO (0.5) // 50% of outputs are from the recent zone
 #define RECENT_OUTPUT_DAYS (1.8) // last 1.8 day makes up the recent zone (taken from noxcoinlink.pdf, Miller et al)
@@ -128,11 +128,11 @@ using namespace cryptonote;
 #define SUBADDRESS_LOOKAHEAD_MAJOR 50
 #define SUBADDRESS_LOOKAHEAD_MINOR 200
 
-#define KEY_IMAGE_EXPORT_FILE_MAGIC "Noxcoin key image export\003"
+#define KEY_IMAGE_EXPORT_FILE_MAGIC "NoxCoin key image export\003"
 
-#define MULTISIG_EXPORT_FILE_MAGIC "Noxcoin multisig export\001"
+#define MULTISIG_EXPORT_FILE_MAGIC "NoxCoin multisig export\001"
 
-#define OUTPUT_EXPORT_FILE_MAGIC "Noxcoin output export\004"
+#define OUTPUT_EXPORT_FILE_MAGIC "NoxCoin output export\004"
 
 #define SEGREGATION_FORK_HEIGHT 99999999
 #define TESTNET_SEGREGATION_FORK_HEIGHT 99999999
@@ -156,7 +156,7 @@ using namespace cryptonote;
 
 static const std::string MULTISIG_SIGNATURE_MAGIC = "SigMultisigPkV1";
 
-static const std::string ASCII_OUTPUT_MAGIC = "NoxcoinAsciiDataV1";
+static const std::string ASCII_OUTPUT_MAGIC = "NoxCoinAsciiDataV1";
 
 static const std::string BACKGROUND_WALLET_SUFFIX = ".background";
 
@@ -1064,7 +1064,7 @@ uint64_t gamma_picker::pick()
     // 'current_num_outputs - n', then randomly select an output from the block where that output appears.
     // Source code to paper: https://github.com/maltemoeser/noxcoinpaper
     //
-    // Due to the 'default spendable age' mechanic in Noxcoin, 'current_num_outputs' only contains
+    // Due to the 'default spendable age' mechanic in NoxCoin, 'current_num_outputs' only contains
     // currently *unlocked* outputs, which means the earliest output that can be selected is not at the chain tip!
     // Therefore, we must offset 'x' so it matches up with the timing of the outputs being considered. We do
     // this by saying if 'x` equals the expected age of the first unlocked output (compared to the current
@@ -6392,7 +6392,7 @@ bool wallet2::check_hard_fork_version(cryptonote::network_type nettype, const st
       uint64_t daemon_missed_fork_height = wallet_hard_forks[daemon_hard_forks.size()].height;
 
       // If the daemon missed the fork, then technically it is no longer part of
-      // the Noxcoin network. Don't connect.
+      // the NoxCoin network. Don't connect.
       bool daemon_missed_fork = height >= daemon_missed_fork_height || target_height >= daemon_missed_fork_height;
       if (daemon_missed_fork)
         return false;
@@ -6402,7 +6402,7 @@ bool wallet2::check_hard_fork_version(cryptonote::network_type nettype, const st
       uint64_t wallet_missed_fork_height = daemon_hard_forks[wallet_num_hard_forks].second;
 
       // If the wallet missed the fork, then technically it is no longer able
-      // to communicate with the Noxcoin network. Don't connect.
+      // to communicate with the NoxCoin network. Don't connect.
       bool wallet_missed_fork = height >= wallet_missed_fork_height || target_height >= wallet_missed_fork_height;
       if (wallet_missed_fork)
         return false;
@@ -15197,7 +15197,7 @@ mms::multisig_wallet_state wallet2::get_multisig_wallet_state() const
   state.num_transfer_details = m_transfers.size();
   if (state.multisig)
   {
-    THROW_WALLET_EXCEPTION_IF(!m_original_keys_available, error::wallet_internal_error, "MMS use not possible because own original Noxcoin address not available");
+    THROW_WALLET_EXCEPTION_IF(!m_original_keys_available, error::wallet_internal_error, "MMS use not possible because own original NoxCoin address not available");
     state.address = m_original_address;
     state.view_secret_key = m_original_view_secret_key;
   }

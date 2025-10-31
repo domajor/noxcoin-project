@@ -1,4 +1,4 @@
-# Contributing to Noxcoin
+# Contributing to NoxCoin
 
 A good way to help is to test, and report bugs. See
 [How to Report Bugs Effectively (by Simon Tatham)](https://www.chiark.greenend.org.uk/~sgtatham/bugs.html)
@@ -65,7 +65,7 @@ the previous paragraph is here.
 ## License
 
 Copyright (c) 2009-2015 Pieter Hintjens.
-Copyright (c) 2017-2024, The Noxcoin Project
+Copyright (c) 2017-2024, The NoxCoin Project
 
 This Specification is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
 
@@ -77,7 +77,7 @@ You should have received a copy of the GNU General Public License along with thi
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in RFC 2119.
 
-The "Noxcoin Maintainer Team" is defined in this document as the following users:
+The "NoxCoin Maintainer Team" is defined in this document as the following users:
 - fluffypony
 - noxcoinmooo
 - hyc
@@ -136,7 +136,7 @@ C4 is meant to provide a reusable optimal collaboration model for open source so
 - To request changes, a user SHOULD log an issue on the project Platform issue tracker.
 - The user or Contributor SHOULD write the issue by describing the problem they face or observe.
 - The user or Contributor SHOULD seek consensus on the accuracy of their observation, and the value of solving the problem.
-- Users MUST NOT log feature requests, ideas, or suggestions unrelated to Noxcoin code or Noxcoin's dependency code or Noxcoin's potential/future dependency code or research which successfully implements Noxcoin.
+- Users MUST NOT log feature requests, ideas, or suggestions unrelated to NoxCoin code or NoxCoin's dependency code or NoxCoin's potential/future dependency code or research which successfully implements NoxCoin.
 - Users MUST NOT log any solutions to problems (verifiable or hypothetical) of which are not explicitly documented and/or not provable and/or cannot be reasonably proven.
 - Thus, the release history of the project MUST be a list of meaningful issues logged and solved.
 - To work on an issue, a Contributor MUST fork the project repository and then work on their forked repository.
@@ -144,9 +144,9 @@ C4 is meant to provide a reusable optimal collaboration model for open source so
 - A Contributor MUST NOT commit changes directly to the project.
 - To discuss a patch, people MAY comment on the Platform pull request, on the commit, or elsewhere.
 - To accept or reject a patch, a Maintainer MUST use the Platform interface.
-- Maintainers SHOULD NOT merge their own patches except in exceptional cases, such as non-responsiveness from other Maintainers for an extended period (more than 30 days) or unless urgent as defined by the Noxcoin Maintainers Team.
+- Maintainers SHOULD NOT merge their own patches except in exceptional cases, such as non-responsiveness from other Maintainers for an extended period (more than 30 days) or unless urgent as defined by the NoxCoin Maintainers Team.
 - Maintainers MUST NOT make value judgments on correct patches unless the Maintainer (as may happen in rare circumstances) is a core code developer.
-- Maintainers MUST NOT merge pull requests in less than 168 hours (1 week) unless deemed urgent by at least 2 people from the Noxcoin Maintainer Team.
+- Maintainers MUST NOT merge pull requests in less than 168 hours (1 week) unless deemed urgent by at least 2 people from the NoxCoin Maintainer Team.
 - The Contributor MAY tag an issue as "Ready" after making a pull request for the issue.
 - The user who created an issue SHOULD close the issue after checking the patch is successful.
 - Maintainers SHOULD ask for improvements to incorrect patches and SHOULD reject incorrect patches if the Contributor does not respond constructively.

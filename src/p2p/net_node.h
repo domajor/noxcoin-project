@@ -1,5 +1,5 @@
 // Copyright (c) 2014-2025, The Monero Project
-// Copyright (c) 2025, The Noxcoin
+// Copyright (c) 2025, The NoxCoin
 //
 // All rights reserved.
 //
@@ -299,11 +299,11 @@ namespace nodetool
     virtual void remove_used_stripe_peer(const typename t_payload_net_handler::connection_context &context);
     virtual void clear_used_stripe_peers();
 
-  private:
+private:
     const std::vector<std::string> m_seed_nodes_list =
-    { "nox1.noxcoin.org"
-    , "nox2.noxcoin.org"
-    , "nox3.noxcoin.org"
+    { "nxc1.noxcoin.online"
+    , "nxc2.noxcoin.online"
+    , "nxc3.noxcoin.online"
     };
 
     bool islimitup=false;

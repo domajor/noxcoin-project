@@ -1,5 +1,5 @@
 // Copyright (c) 2014-2025, The Monero Project
-// Copyright (c) 2025, The Noxcoin
+// Copyright (c) 2025, The NoxCoin
 //
 // All rights reserved.
 //
@@ -44,7 +44,7 @@
 #undef MONERO_DEFAULT_LOG_CATEGORY
 #define MONERO_DEFAULT_LOG_CATEGORY "WalletAPI"
 
-namespace Noxcoin {
+namespace NoxCoin {
 
 WalletManagerImpl::WalletManagerImpl()
 {

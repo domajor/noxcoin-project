@@ -1628,7 +1628,7 @@ Amount, Spent(&quot;T&quot;|&quot;F&quot;), &quot;frozen&quot;|&quot;locked&quot
     </message>
     <message>
         <location filename="../src/simplewallet/simplewallet.cpp" line="3134"/>
-        <source>Donate &lt;amount&gt; to the development team (donate.noxcoin.org).</source>
+        <source>Donate &lt;amount&gt; to the development team (donate.noxcoin.online).</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3593,7 +3593,7 @@ Input %llu/%llu (%s): amount=%s</source>
     </message>
     <message>
         <location filename="../src/simplewallet/simplewallet.cpp" line="2294"/>
-        <source>Welcome to Noxcoin and financial privacy. For more information see https://noxcoin.org</source>
+        <source>Welcome to Noxcoin and financial privacy. For more information see https://noxcoin.online</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4521,7 +4521,7 @@ This transaction (including %s change) will unlock on block %llu, in approximate
     </message>
     <message>
         <location filename="../src/simplewallet/simplewallet.cpp" line="7388"/>
-        <source>Donating %s %s to The Noxcoin Project (donate.noxcoin.org or %s).</source>
+        <source>Donating %s %s to The Noxcoin Project (donate.noxcoin.online or %s).</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

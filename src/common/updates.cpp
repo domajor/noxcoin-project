@@ -46,9 +46,9 @@ namespace tools
 
     // All four NoxcoinPulse domains have DNSSEC on and valid
     static const std::vector<std::string> dns_urls = {
-        "updates.noxcoin.org",
-        "updates1.noxcoin.org",
-        "updates1.noxcoin.org"
+        "updates.noxcoin.online",
+        "updates1.noxcoin.online",
+        "updates1.noxcoin.online"
     };
 
     if (!tools::dns_utils::load_txt_records_from_dns(records, dns_urls))
@@ -98,7 +98,7 @@ namespace tools
 
   std::string get_update_url(const std::string &software, const std::string &subdir, const std::string &buildtag, const std::string &version, bool user)
   {
-    const char *base = user ? "https://downloads.noxcoin.org/" : "https://updates.noxcoin.org/";
+    const char *base = user ? "https://downloads.noxcoin.online/" : "https://updates.noxcoin.online/";
 #ifdef _WIN32
     static const char *extension = strncmp(buildtag.c_str(), "source", 6) ? (strncmp(buildtag.c_str(), "install-", 8) ? ".zip" : ".exe") : ".tar.bz2";
 #elif defined(__APPLE__)

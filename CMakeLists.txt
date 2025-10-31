@@ -1,4 +1,4 @@
-# Copyright (c) 2014-2024, The Noxcoin Project
+# Copyright (c) 2014-2024, The NoxCoin Project
 #
 # All rights reserved.
 #
@@ -489,7 +489,7 @@ if(SANITIZE)
 endif()
 
 # Set default blockchain storage location:
-# memory was the default in Cryptonote before Noxcoin implemented LMDB, it still works but is unnecessary.
+# memory was the default in Cryptonote before NoxCoin implemented LMDB, it still works but is unnecessary.
 # set(DATABASE memory)
 set(DATABASE lmdb)
 message(STATUS "Using LMDB as default DB type")

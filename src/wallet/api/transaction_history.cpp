@@ -1,5 +1,5 @@
 // Copyright (c) 2014-2025, The Monero Project
-// Copyright (c) 2025, The Noxcoin
+// Copyright (c) 2025, The NoxCoin
 //
 // All rights reserved.
 //
@@ -43,7 +43,7 @@
 
 using namespace epee;
 
-namespace Noxcoin {
+namespace NoxCoin {
 
 TransactionHistory::~TransactionHistory() {}
 
@@ -127,7 +127,7 @@ void TransactionHistoryImpl::refresh()
     // - payment_details              - input transfers
 
     // payments are "input transactions";
-    // one input transaction contains only one transfer. e.g. <transaction_id> - <100NOX>
+    // one input transaction contains only one transfer. e.g. <transaction_id> - <100NNXC>
 
     std::list<std::pair<crypto::hash, tools::wallet2::payment_details>> in_payments;
     m_wallet->m_wallet->get_payments(in_payments, min_height, max_height);
@@ -158,8 +158,8 @@ void TransactionHistoryImpl::refresh()
     // confirmed output transactions
     // one output transaction may contain more than one money transfer, e.g.
     // <transaction_id>:
-    //    transfer1: 100NOX to <address_1>
-    //    transfer2: 50NOX  to <address_2>
+    //    transfer1: 100NNXC to <address_1>
+    //    transfer2: 50NXC  to <address_2>
     //    fee: fee charged per transaction
     //
 

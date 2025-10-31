@@ -1,5 +1,5 @@
 // Copyright (c) 2014-2025, The Monero Project
-// Copyright (c) 2025, The Noxcoin
+// Copyright (c) 2025, The NoxCoin
 //
 // All rights reserved.
 //
@@ -42,7 +42,7 @@
 
 class WalletApiAccessorTest;
 
-namespace Noxcoin {
+namespace NoxCoin {
 class TransactionHistoryImpl;
 class PendingTransactionImpl;
 class UnsignedTransactionImpl;
@@ -264,7 +264,7 @@ private:
     mutable int m_status;
     mutable std::string m_errorString;
     // TODO: harden password handling in the wallet API, see relevant discussion
-    // https://github.com/domajor/noxcoin-gui/issues/1537
+    // https://github.com/domajor/noxcoin-project/issues/1537
     // https://github.com/feather-wallet/feather/issues/72#issuecomment-1405602142
     // https://github.com/domajor/noxcoin/pull/8619#issuecomment-1632951461
     std::string m_password;

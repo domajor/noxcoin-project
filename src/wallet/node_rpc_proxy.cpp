@@ -1,4 +1,4 @@
-// Copyright (c) 2017-2024, The Noxcoin Project
+// Copyright (c) 2017-2024, The NoxCoin Project
 // 
 // All rights reserved.
 // 

@@ -1,5 +1,5 @@
 // Copyright (c) 2014-2025, The Monero Project
-// Copyright (c) 2025, The Noxcoin
+// Copyright (c) 2025, The NoxCoin
 //
 // All rights reserved.
 //
@@ -93,7 +93,7 @@ using namespace cryptonote;
     } \
   } while (0)
 
-namespace Noxcoin {
+namespace NoxCoin {
 
 namespace {
     // copy-pasted from simplewallet

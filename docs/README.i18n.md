@@ -1,9 +1,9 @@
-Noxcoin daemon internationalization
+NoxCoin daemon internationalization
 ==================================
 
-The Noxcoin command line tools can be translated in various languages. If you wish to contribute and need help/support, contact the [Noxcoin Localization Workgroup on Taiga](https://taiga.noxcoin.org/project/erciccione-noxcoin-localization/) or come chat on `#noxcoin-translations` (Libera/IRC, riot/matrix, MatterMost)
+The NoxCoin command line tools can be translated in various languages. If you wish to contribute and need help/support, contact the [NoxCoin Localization Workgroup on Taiga](https://taiga.noxcoin.online/project/erciccione-noxcoin-localization/) or come chat on `#noxcoin-translations` (Libera/IRC, riot/matrix, MatterMost)
 
-In order to use the same translation workflow as the [Noxcoin Core GUI](https://github.com/domajor/noxcoin-gui), they use Qt Linguist translation files.  However, to avoid the dependencies on Qt this normally implies, they use a custom loader to read those files at runtime.
+In order to use the same translation workflow as the [NoxCoin Core GUI](https://github.com/domajor/noxcoin-project), they use Qt Linguist translation files.  However, to avoid the dependencies on Qt this normally implies, they use a custom loader to read those files at runtime.
 
 ### Tools for translators
 

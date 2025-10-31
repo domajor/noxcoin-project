@@ -880,7 +880,7 @@ TEST(get_network_address_host_and_port, hostname)
 {
     na_host_and_port_test("localhost", "localhost", "xxxxx");
     na_host_and_port_test("bar:29080", "bar", "29080"); 
-    na_host_and_port_test("t.noxcoin.org:19009", "t.noxcoin.org", "19009");
+    na_host_and_port_test("t.noxcoin.online:19009", "t.noxcoin.online", "19009");
 }
 
 namespace

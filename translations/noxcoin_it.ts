@@ -1030,8 +1030,8 @@
     </message>
     <message>
         <location filename="../src/simplewallet/simplewallet.cpp" line="7388"/>
-        <source>Donating %s %s to The Noxcoin Project (donate.noxcoin.org or %s).</source>
-        <translation>Donare %s %s a The Noxcoin Project (donate.noxcoin.org o %s).</translation>
+        <source>Donating %s %s to The Noxcoin Project (donate.noxcoin.online or %s).</source>
+        <translation>Donare %s %s a The Noxcoin Project (donate.noxcoin.online o %s).</translation>
     </message>
     <message>
         <location filename="../src/simplewallet/simplewallet.cpp" line="7390"/>
@@ -1618,8 +1618,8 @@ Amount, Spent(&quot;T&quot;|&quot;F&quot;), &quot;frozen&quot;|&quot;locked&quot
     </message>
     <message>
         <location filename="../src/simplewallet/simplewallet.cpp" line="3134"/>
-        <source>Donate &lt;amount&gt; to the development team (donate.noxcoin.org).</source>
-        <translation>Dona &lt;amount&gt; al team di sviluppo (donate.noxcoin.org).</translation>
+        <source>Donate &lt;amount&gt; to the development team (donate.noxcoin.online).</source>
+        <translation>Dona &lt;amount&gt; al team di sviluppo (donate.noxcoin.online).</translation>
     </message>
     <message>
         <location filename="../src/simplewallet/simplewallet.cpp" line="3141"/>
@@ -2840,7 +2840,7 @@ This transaction (including %s change) will unlock on block %llu, in approximate
     </message>
     <message>
         <location filename="../src/simplewallet/simplewallet.cpp" line="2294"/>
-        <source>Welcome to Noxcoin and financial privacy. For more information see https://noxcoin.org</source>
+        <source>Welcome to Noxcoin and financial privacy. For more information see https://noxcoin.online</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

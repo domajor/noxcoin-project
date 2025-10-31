@@ -1,5 +1,5 @@
 // Copyright (c) 2014-2025, The Monero Project
-// Copyright (c) 2025, The Noxcoin
+// Copyright (c) 2025, The NoxCoin
 // 
 // All rights reserved.
 // 
@@ -43,7 +43,7 @@
 #include <vector>
 
 //  Public interface for libwallet library
-namespace Noxcoin {
+namespace NoxCoin {
 
 enum NetworkType : uint8_t {
     MAINNET = 0,

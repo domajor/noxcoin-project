@@ -1,4 +1,4 @@
-// Copyright (c) 2017-2024, The Noxcoin Project
+// Copyright (c) 2017-2024, The NoxCoin Project
 //
 // All rights reserved.
 //
@@ -29,7 +29,7 @@
 #include "wallet/api/wallet2_api.h"
 #include "wallet/wallet2.h"
 
-namespace Noxcoin {
+namespace NoxCoin {
 
 class WalletImpl;
 

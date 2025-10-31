@@ -1,4 +1,4 @@
-# Copyright (c) 2014-2024, The Noxcoin Project
+# Copyright (c) 2014-2024, The NoxCoin Project
 # 
 # All rights reserved.
 # 
@@ -27,7 +27,7 @@
 # THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 function (write_version tag)
-  set(VERSIONTAG "${tag}" CACHE STRING "The tag portion of the Noxcoin software version" FORCE)
+  set(VERSIONTAG "${tag}" CACHE STRING "The tag portion of the NoxCoin software version" FORCE)
   configure_file("${CMAKE_CURRENT_LIST_DIR}/../src/version.cpp.in" "${CMAKE_BINARY_DIR}/version.cpp")
 endfunction ()
 

@@ -1,5 +1,5 @@
 // Copyright (c) 2014-2025, The Monero Project
-// Copyright (c) 2025, The Noxcoin
+// Copyright (c) 2025, The NoxCoin
 // 
 // All rights reserved.
 // 
@@ -1055,7 +1055,7 @@ namespace tools
           }
           if (addresses.empty())
           {
-            er.message = std::string("No Noxcoin address found at ") + url;
+            er.message = std::string("No NoxCoin address found at ") + url;
             return {};
           }
           return addresses[0];
@@ -2480,7 +2480,7 @@ namespace tools
         }
         if (addresses.empty())
         {
-          er.message = std::string("No Noxcoin address found at ") + url;
+          er.message = std::string("No NoxCoin address found at ") + url;
           return {};
         }
         return addresses[0];
@@ -3309,7 +3309,7 @@ namespace tools
         }
         if (addresses.empty())
         {
-          er.message = std::string("No Noxcoin address found at ") + url;
+          er.message = std::string("No NoxCoin address found at ") + url;
           return {};
         }
         return addresses[0];
@@ -3364,7 +3364,7 @@ namespace tools
           }
           if (addresses.empty())
           {
-            er.message = std::string("No Noxcoin address found at ") + url;
+            er.message = std::string("No NoxCoin address found at ") + url;
             return {};
           }
           return addresses[0];
@@ -4744,7 +4744,7 @@ namespace tools
             }
             if (addresses.empty())
             {
-              er.message = std::string("No Noxcoin address found at ") + url;
+              er.message = std::string("No NoxCoin address found at ") + url;
               return {};
             }
             address = addresses[0];

@@ -1385,7 +1385,7 @@ Transaction </translation>
     </message>
     <message>
         <location filename="../src/simplewallet/simplewallet.cpp" line="2294"/>
-        <source>Welcome to Noxcoin and financial privacy. For more information see https://noxcoin.org</source>
+        <source>Welcome to Noxcoin and financial privacy. For more information see https://noxcoin.online</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2609,8 +2609,8 @@ Amount, Spent(&quot;T&quot;|&quot;F&quot;), &quot;frozen&quot;|&quot;locked&quot
     </message>
     <message>
         <location filename="../src/simplewallet/simplewallet.cpp" line="3134"/>
-        <source>Donate &lt;amount&gt; to the development team (donate.noxcoin.org).</source>
-        <translation>Donner &lt;montant&gt; à l&apos;équipe de développement (donate.noxcoin.org).</translation>
+        <source>Donate &lt;amount&gt; to the development team (donate.noxcoin.online).</source>
+        <translation>Donner &lt;montant&gt; à l&apos;équipe de développement (donate.noxcoin.online).</translation>
     </message>
     <message>
         <location filename="../src/simplewallet/simplewallet.cpp" line="3141"/>
@@ -4485,8 +4485,8 @@ Entrée %llu/%llu (%s): montant=%s</translation>
     </message>
     <message>
         <location filename="../src/simplewallet/simplewallet.cpp" line="7388"/>
-        <source>Donating %s %s to The Noxcoin Project (donate.noxcoin.org or %s).</source>
-        <translation>Don de %s %s à The Noxcoin Project (donate.noxcoin.org ou %s).</translation>
+        <source>Donating %s %s to The Noxcoin Project (donate.noxcoin.online or %s).</source>
+        <translation>Don de %s %s à The Noxcoin Project (donate.noxcoin.online ou %s).</translation>
     </message>
     <message>
         <location filename="../src/simplewallet/simplewallet.cpp" line="7722"/>

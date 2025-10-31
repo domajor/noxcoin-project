@@ -1,14 +1,14 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/domajor/noxcoin-project/main/logo.png" alt="Noxcoin Logo" width="180"/>
+  <img src="https://raw.githubusercontent.com/domajor/noxcoin-project/main/logo.png" alt="NoxCoin Logo" width="180"/>
 </p>
 
-# Noxcoin Project  v0.0.4.0
+# NoxCoin Project  v0.5.1.3
 
-## Noxcoin – Private. Secure. Untraceable.
+## NoxCoin – Private. Secure. Untraceable.
 
 ### ?? Note from the Maintainer
 Hello!  
-This is a community revival of **Noxcoin** — all previous threats have been deleted and purged.  
+This is a community revival of **NoxCoin** — all previous threats have been deleted and purged.  
 Please verify everything independently and use only trusted sources.  
 
 My goal is simple: to help this coin survive and grow into a secure, community-driven project.  
@@ -28,12 +28,12 @@ I'm not an official developer — this project is open to everyone who wishes to h
 ---
 
 ##  Acknowledgments
-Special thanks to **@aalnase** ([go-poolmining.com](https://go-poolmining.com)) for his technical help and support in rebuilding and maintaining the Noxcoin network.
+Special thanks to **@aalnase** ([go-poolmining.com](https://go-poolmining.com)) for his technical help and support in rebuilding and maintaining the NoxCoin network.
 
 ---
 
-##  About Noxcoin
-**Noxcoin** is a fork of **Monero**, the most battle-tested privacy cryptocurrency — rebuilt with a community-first vision.  
+##  About NoxCoin
+**NoxCoin** is a fork of **Monero**, the most battle-tested privacy cryptocurrency — rebuilt with a community-first vision.  
 It retains Monero’s strong cryptographic foundation while introducing new emission rules, scaling adjustments, and decentralization incentives.
 
 ---
@@ -46,7 +46,7 @@ See [LICENSE](LICENSE).
 
 If you want to help out, see [CONTRIBUTING](docs/CONTRIBUTING.md) for a set of guidelines.
 
-## Compiling Noxcoin from source
+## Compiling NoxCoin from source
 
 ### Dependencies
 

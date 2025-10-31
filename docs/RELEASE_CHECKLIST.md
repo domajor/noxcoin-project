@@ -1,25 +1,25 @@
-# Noxcoin hard-fork release check-list
+# NoxCoin hard-fork release check-list
 
 - [ ] Security audit
 - [ ] Code audit
 - [ ] Ledger integration
   - [ ] Ledger notified
-  - [ ] Pull request made against Noxcoin codebase (if needed)
-  - [ ] Pull request merged into Noxcoin codebase (if needed)
+  - [ ] Pull request made against NoxCoin codebase (if needed)
+  - [ ] Pull request merged into NoxCoin codebase (if needed)
   - [ ] Ledger app integration coded
-  - [ ] Ledger Noxcoin app update available
+  - [ ] Ledger NoxCoin app update available
 - [ ] Trezor integration
   - [ ] Trezor notified
-  - [ ] Pull request made against Noxcoin codebase (if needed)
-  - [ ] Pull request merged into Noxcoin codebase (if needed)
+  - [ ] Pull request made against NoxCoin codebase (if needed)
+  - [ ] Pull request merged into NoxCoin codebase (if needed)
   - [ ] Trezor firmware update coded
   - [ ] Trezor firmware update available
 - [ ] Fork height set
   - [ ] Twitter announcement
   - [ ] Reddit announcement
-  - [ ] noxcoin.org announcement
+  - [ ] noxcoin.online announcement
 - [ ] Notify wallets
-  - [ ] MyNoxcoin
+  - [ ] MyNoxCoin
   - [ ] Coinomi
   - [ ] Exa Wallet
   - [ ] Wookey Wallet
@@ -30,18 +30,18 @@
   - [ ] Monerujo
   - [ ] Edge Wallet
   - [ ] Exodus
-  - [ ] NOXWallet
+  - [ ] NXCWallet
   - [ ] Feather Wallet
 - [ ] Notify exchanges
-  - [ ] https://www.noxcoin.org/community/merchants/#exchanges
+  - [ ] https://www.noxcoin.online/community/merchants/#exchanges
 - [ ] Notify 3rd party payment processors
-  - [ ] https://www.noxcoin.org/community/merchants/#payment-gateways
+  - [ ] https://www.noxcoin.online/community/merchants/#payment-gateways
   - [ ] BTCPayServer
 - [ ] Notify mining pools
   - [ ] https://miningpoolstats.stream/noxcoin
 - [ ] Release branch created
   - [ ] Update src/version.cpp.in with new version AND new name (if necessary)
-  - [ ] Update README.md with new fork table entry (or at least update the Recommended Noxcoin version)
+  - [ ] Update README.md with new fork table entry (or at least update the Recommended NoxCoin version)
   - [ ] Update src/checkpoints/checkpoints.cpp with a recent hardcoded checkpoint
   - [ ] Update src/blocks/checkpoints.dat with ./noxcoin-blockchain-export --output-file checkpoints.dat --block-stop <recent block height> --blocksdat
   - [ ] Update expected_block_hashes_hash in src/cryptonote_core/blockchain.cpp with checkpoints.dat sha256 hash
@@ -58,21 +58,21 @@
   - [ ] Release-specific testing
 - [ ] CLI reproducible builds validated
 - [ ] CLI released
-  - [ ] https://www.noxcoin.org/downloads/ updated
+  - [ ] https://www.noxcoin.online/downloads/ updated
   - [ ] Update hashes.txt on website
   - [ ] Update downloads.yml on website
   - [ ] Update auto-update DNS records
   - [ ] Update redirects on downloads box
   - [ ] Update seed nodes
 - [ ] GUI released
-  - [ ] https://www.noxcoin.org/downloads/ updated
+  - [ ] https://www.noxcoin.online/downloads/ updated
   - [ ] Update hashes.txt on website
   - [ ] Update hashes.txt.sig on website
   - [ ] Update downloads.yml on website
   - [ ] Update auto-update DNS records
   - [ ] Update redirects on downloads box
 - [ ] Release Announcements
-  - [ ] Noxcoin-announce mailer notice
+  - [ ] NoxCoin-announce mailer notice
   - [ ] Twitter announcement
   - [ ] Reddit announcement
-  - [ ] noxcoin.org announcement
+  - [ ] noxcoin.online announcement

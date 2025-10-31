@@ -271,7 +271,7 @@ DNSResolver::DNSResolver() : m_data(new DNSResolverData())
     // should be a valid DNSSEC record, and switch to known good
     // DNSSEC resolvers if verification fails
     bool available, valid;
-    static const char *probe_hostname = "updates.noxcoin.org";
+    static const char *probe_hostname = "updates.noxcoin.online";
     auto records = get_txt_record(probe_hostname, available, valid);
     if (!valid)
     {
@@ -431,7 +431,7 @@ std::string address_from_txt_record(const std::string& s)
  *
  * gets the noxcoin address from the TXT record of the DNS entry associated
  * with <url>.  If this lookup fails, or the TXT record does not contain an
- * NOX address in the correct format, returns an empty string.  <dnssec_valid>
+ * NXC address in the correct format, returns an empty string.  <dnssec_valid>
  * will be set true or false according to whether or not the DNS query passes
  * DNSSEC validation.
  *

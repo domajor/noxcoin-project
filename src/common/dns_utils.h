@@ -123,7 +123,7 @@ public:
    * @brief Gets a DNS address from OpenAlias format
    *
    * If the address looks good, but contains one @ symbol, replace that with a .
-   * e.g. donate@noxcoin.org becomes donate.noxcoin.org
+   * e.g. donate@noxcoin.online becomes donate.noxcoin.online
    *
    * @param oa_addr  OpenAlias address
    *

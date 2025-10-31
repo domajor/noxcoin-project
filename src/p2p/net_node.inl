@@ -2042,9 +2042,9 @@ namespace nodetool
       return true;
 
     static const std::vector<std::string> dns_urls = {
-      "nox1.noxcoin.org"
-    , "nox2.noxcoin.org"
-    , "nox3.noxcoin.org"
+      "nox1.noxcoin.online"
+    , "nox2.noxcoin.online"
+    , "nox3.noxcoin.online"
     };
 
     std::vector<std::string> records;

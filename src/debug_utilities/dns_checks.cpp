@@ -129,9 +129,9 @@ int main(int argc, char* argv[])
   mlog_configure("", true);
   mlog_set_categories("+" MONERO_DEFAULT_LOG_CATEGORY ":INFO");
 
-  lookup(LOOKUP_TXT, {"updates.noxcoin.org"});
+  lookup(LOOKUP_TXT, {"updates.noxcoin.online"});
 
-  lookup(LOOKUP_TXT, {"checkpoints.noxcoin.org"});
+  lookup(LOOKUP_TXT, {"checkpoints.noxcoin.online"});
 
   return 0;
   CATCH_ENTRY_L0("main", 1);
