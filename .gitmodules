@@ -10,3 +10,6 @@
 [submodule "external/randomx"]
 	path = external/randomx
 	url = https://github.com/tevador/RandomX.git
+[submodule "external/supercop"]
+	path = external/supercop
+	url = https://github.com/monero-project/supercop.git
