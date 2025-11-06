@@ -1,0 +1,4 @@
+#pragma once
+// Dummy crypto functions for Noxcoin build
+static inline void noxcoin_crypto_generate_key_derivation() {}
+static inline void noxcoin_crypto_derive_subaddress_public_key() {}
