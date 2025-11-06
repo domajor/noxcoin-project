@@ -2,7 +2,7 @@
   <img src="https://raw.githubusercontent.com/domajor/noxcoin-project/main/logo.png" alt="NoxCoin Logo" width="180"/>
 </p>
 
-# NoxCoin Project  v0.5.1.3
+# NoxCoin NXC Project  v0.5.1.3
 
 ## NoxCoin – Private. Secure. Untraceable.
 

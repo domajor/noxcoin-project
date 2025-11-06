@@ -164,6 +164,7 @@
 #define RPC_IP_FAILS_BEFORE_BLOCK                       3
 
 #define CRYPTONOTE_NAME                         "bitnoxcoin"
+#define CRYPTONOTE_TICKER                       "NXC"
 #define CRYPTONOTE_BLOCKCHAINDATA_FILENAME      "data.mdb"
 #define CRYPTONOTE_BLOCKCHAINDATA_LOCK_FILENAME "lock.mdb"
 #define P2P_NET_DATA_FILENAME                   "p2pstate.bin"
@@ -228,9 +229,9 @@ namespace config
   uint64_t const CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX = 126;
   uint64_t const CRYPTONOTE_PUBLIC_INTEGRATED_ADDRESS_BASE58_PREFIX = 131;
   uint64_t const CRYPTONOTE_PUBLIC_SUBADDRESS_BASE58_PREFIX = 648;
-  uint16_t const P2P_DEFAULT_PORT = 19008;
+  uint16_t const P2P_DEFAULT_PORT = 19890;
   uint16_t const RPC_DEFAULT_PORT = 19009;
-  uint16_t const ZMQ_RPC_DEFAULT_PORT = 10002;
+  uint16_t const ZMQ_RPC_DEFAULT_PORT = 19891;
   boost::uuids::uuid const NETWORK_ID = { {
       0x53 ,0x10, 0xC2, 0x33, 0x42, 0x15, 0x21, 0x12, 0x46, 0x44, 0x10, 0x12, 0x12, 0xB1, 0x11, 0x18
     } }; // Bender's nightmare

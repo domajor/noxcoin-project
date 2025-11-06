@@ -4259,7 +4259,10 @@ void wallet2::refresh(bool trusted_daemon, uint64_t start_height, uint64_t & blo
 
   m_multisig_rescan_k = std::vector<std::vector<rct::key>>{};
 
-  LOG_PRINT_L1("Refresh done, blocks received: " << blocks_fetched << ", balance (all accounts): " << print_money(balance_all(false)) << ", unlocked: " << print_money(unlocked_balance_all(false)));
+LOG_PRINT_L1("Refresh done, blocks received: " << blocks_fetched
+             << ", balance (all accounts): " << print_money(balance_all(false)) << " NXC"
+             << ", unlocked: " << print_money(unlocked_balance_all(false)) << " NXC");
+
 }
 //----------------------------------------------------------------------------------------------------
 bool wallet2::refresh(bool trusted_daemon, uint64_t & blocks_fetched, bool& received_money, bool& ok)
