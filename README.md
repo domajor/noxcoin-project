@@ -177,11 +177,29 @@ make release
 ### Windows (MSYS2 / MINGW64)
 Follow the MSYS2 setup, then:
 ~~~bash
+
+git clone --recursive https://github.com/domajor/noxcoin-win.git 
+cd noxcoin-win
+
 pacman -Syu
-pacman -S mingw-w64-x86_64-toolchain make mingw-w64-x86_64-cmake \
-  mingw-w64-x86_64-boost mingw-w64-x86_64-openssl mingw-w64-x86_64-zeromq \
-  mingw-w64-x86_64-libsodium mingw-w64-x86_64-hidapi mingw-w64-x86_64-unbound
-make release-static -j"$(nproc)"
+
+cmake -G "MSYS Makefiles" \
+  -DCMAKE_BUILD_TYPE=Release \
+  -DBOOST_ROOT="$HOME/boost" \
+  -DBOOST_INCLUDEDIR="$HOME/boost" \
+  -DBOOST_LIBRARYDIR="$HOME/boost/stage/lib" \
+  -DBoost_NO_SYSTEM_PATHS=ON \
+  -DBoost_USE_STATIC_LIBS=ON \
+  -DBoost_USE_MULTITHREADED=ON \
+  -DBoost_USE_STATIC_RUNTIME=OFF \
+  -DGUI=ON \
+  -DMANUAL_SUBMODULES=1 \
+  -DGCRYPT_INCLUDE_DIR=/mingw64/include \
+  -DGCRYPT_LIBRARY=/mingw64/lib/libgcrypt.dll.a \
+  ..
+
+mingw32-make -j$(nproc)
+
 ~~~
 Executables will be in `build/release/bin`.
 
