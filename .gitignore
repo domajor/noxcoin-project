@@ -1,0 +1,20 @@
+# Build folders
+build/
+CMakeFiles/
+CMakeCache.txt
+Makefile
+
+# Compiled objects
+*.o
+*.a
+*.so
+*.exe
+*.dll
+
+# Logs & temp
+*.log
+*.tmp
+
+# Python cache
+__pycache__/
+*.pyc

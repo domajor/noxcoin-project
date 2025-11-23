@@ -1,0 +1,78 @@
+# NoxCoin hard-fork release check-list
+
+- [ ] Security audit
+- [ ] Code audit
+- [ ] Ledger integration
+  - [ ] Ledger notified
+  - [ ] Pull request made against NoxCoin codebase (if needed)
+  - [ ] Pull request merged into NoxCoin codebase (if needed)
+  - [ ] Ledger app integration coded
+  - [ ] Ledger NoxCoin app update available
+- [ ] Trezor integration
+  - [ ] Trezor notified
+  - [ ] Pull request made against NoxCoin codebase (if needed)
+  - [ ] Pull request merged into NoxCoin codebase (if needed)
+  - [ ] Trezor firmware update coded
+  - [ ] Trezor firmware update available
+- [ ] Fork height set
+  - [ ] Twitter announcement
+  - [ ] Reddit announcement
+  - [ ] noxcoin.online announcement
+- [ ] Notify wallets
+  - [ ] MyNoxCoin
+  - [ ] Coinomi
+  - [ ] Exa Wallet
+  - [ ] Wookey Wallet
+  - [ ] X Wallet
+  - [ ] Guarda
+  - [ ] ZelCore
+  - [ ] Cake Wallet
+  - [ ] Monerujo
+  - [ ] Edge Wallet
+  - [ ] Exodus
+  - [ ] NXCWallet
+  - [ ] Feather Wallet
+- [ ] Notify exchanges
+  - [ ] https://www.noxcoin.online/community/merchants/#exchanges
+- [ ] Notify 3rd party payment processors
+  - [ ] https://www.noxcoin.online/community/merchants/#payment-gateways
+  - [ ] BTCPayServer
+- [ ] Notify mining pools
+  - [ ] https://miningpoolstats.stream/noxcoin
+- [ ] Release branch created
+  - [ ] Update src/version.cpp.in with new version AND new name (if necessary)
+  - [ ] Update README.md with new fork table entry (or at least update the Recommended NoxCoin version)
+  - [ ] Update src/checkpoints/checkpoints.cpp with a recent hardcoded checkpoint
+  - [ ] Update src/blocks/checkpoints.dat with ./noxcoin-blockchain-export --output-file checkpoints.dat --block-stop <recent block height> --blocksdat
+  - [ ] Update expected_block_hashes_hash in src/cryptonote_core/blockchain.cpp with checkpoints.dat sha256 hash
+- [ ] Testnet forked
+- [ ] Testnet testing/verification
+  - [ ] Ledger
+  - [ ] Trezor
+  - [ ] Release-specific testing
+  - [ ] RPC testing/update RPC documentation
+- [ ] Stagenet forked
+- [ ] Stagenet testing/verification
+  - [ ] Ledger
+  - [ ] Trezor
+  - [ ] Release-specific testing
+- [ ] CLI reproducible builds validated
+- [ ] CLI released
+  - [ ] https://www.noxcoin.online/downloads/ updated
+  - [ ] Update hashes.txt on website
+  - [ ] Update downloads.yml on website
+  - [ ] Update auto-update DNS records
+  - [ ] Update redirects on downloads box
+  - [ ] Update seed nodes
+- [ ] GUI released
+  - [ ] https://www.noxcoin.online/downloads/ updated
+  - [ ] Update hashes.txt on website
+  - [ ] Update hashes.txt.sig on website
+  - [ ] Update downloads.yml on website
+  - [ ] Update auto-update DNS records
+  - [ ] Update redirects on downloads box
+- [ ] Release Announcements
+  - [ ] NoxCoin-announce mailer notice
+  - [ ] Twitter announcement
+  - [ ] Reddit announcement
+  - [ ] noxcoin.online announcement

@@ -1,0 +1,20 @@
+[Unit]
+Description=Noxcoin Full Node
+After=network-online.target
+
+[Service]
+User=noxcoin
+Group=noxcoin
+WorkingDirectory=~
+StateDirectory=noxcoin
+LogsDirectory=noxcoin
+
+Type=simple
+ExecStart=/usr/bin/noxcoind --config-file /etc/noxcoind.conf --non-interactive
+StandardOutput=null
+StandardError=null
+
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
