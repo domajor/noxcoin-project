@@ -224,20 +224,6 @@ namespace nodetool
     // not found in hosts or subnets, allowed
     return true;
   }
-
-  //-----------------------------------------------------------------------------------
-  template<class t_payload_net_handler>
-  bool node_server<t_payload_net_handler>::unblock_host(const epee::net_utils::network_address &address)
-  {
-    CRITICAL_REGION_LOCAL(m_blocked_hosts_lock);
-    auto i = m_blocked_hosts.find(address.host_str());
-    if (i == m_blocked_hosts.end())
-      return false;
-    m_blocked_hosts.erase(i);
-    MCLOG_CYAN(el::Level::Info, "global", "Host " << address.host_str() << " unblocked.");
-    return true;
-  }
-
   //-----------------------------------------------------------------------------------
   template<class t_payload_net_handler>
   bool node_server<t_payload_net_handler>::is_host_limit(const epee::net_utils::network_address &address)
@@ -341,92 +327,19 @@ namespace nodetool
       MINFO("Host " << host_str << " block time updated.");
     return true;
   }
-//-----------------------------------------------------------------------------------
-// Other includes and code above here...
-//-----------------------------------------------------------------------------------
-
-// ============================================================================
-// NOXCOIN DNS SEED NODES
-// ============================================================================
-// This MUST be above the get_ip_seed_nodes() function
-static const std::vector<std::string> DNS_SEED_NODES =
-{
-    "seed1.noxcoin.online",
-    "seed2.noxcoin.online",
-    "seed3.noxcoin.online",
-    "seed4.noxcoin.online"
-};
-
-//-----------------------------------------------------------------------------------
-// Seed IP resolver
-//-----------------------------------------------------------------------------------
-template<class t_payload_net_handler>
-std::set<std::string> node_server<t_payload_net_handler>::get_ip_seed_nodes() const
-{
-    std::set<std::string> full_addrs;
-
-    // -------------------------
-    // MAINNET
-    // -------------------------
-    if (m_nettype == cryptonote::MAINNET)
-    {
-        //
-        // DNS SEED NODES (daemon resolves automatically)
-        //
-        for (const auto &dns_seed : DNS_SEED_NODES)
-            full_addrs.insert(dns_seed);
-
-        //
-        // STATIC SEED NODES — Put your strongest, stable nodes FIRST
-        //
-
-        // Your primary nodes
-        full_addrs.insert("51.38.104.157:19890");   // main daemon
-        full_addrs.insert("51.75.84.91:19890");     // web + explorer + nodejs
-        full_addrs.insert("2.56.245.17:19888");   // backup node
-
-        //
-        // Secondary seeds (mixed ports)
-        //
-        full_addrs.insert("93.184.156.45:19890");
-        full_addrs.insert("185.183.35.91:19008");
-        full_addrs.insert("1.169.170.45:19890");
-        full_addrs.insert("220.191.173.3:19890");
-        full_addrs.insert("110.171.123.186:19890");
-        full_addrs.insert("130.223.1.140:19890");
-    }
-
-    // -------------------------
-    // TESTNET
-    // -------------------------
-    else if (m_nettype == cryptonote::TESTNET)
-    {
-        full_addrs.insert("51.38.104.157:29890");
-        full_addrs.insert("51.75.84.91:29890");
-    }
-
-    // -------------------------
-    // STAGENET
-    // -------------------------
-    else if (m_nettype == cryptonote::STAGENET)
-    {
-        full_addrs.insert("51.38.104.157:39890");
-        full_addrs.insert("51.75.84.91:39890");
-    }
-
-    // -------------------------
-    // FAKECHAIN
-    // -------------------------
-    else if (m_nettype == cryptonote::FAKECHAIN)
-    {
-        // No seeds needed
-    }
-
-    return full_addrs;
-}
-//-----------------------------------------------------------------------------------
-
-
+  //-----------------------------------------------------------------------------------
+  template<class t_payload_net_handler>
+  bool node_server<t_payload_net_handler>::unblock_host(const epee::net_utils::network_address &address)
+  {
+    CRITICAL_REGION_LOCAL(m_blocked_hosts_lock);
+    auto i = m_blocked_hosts.find(address.host_str());
+    if (i == m_blocked_hosts.end())
+      return false;
+    m_blocked_hosts.erase(i);
+    MCLOG_CYAN(el::Level::Info, "global", "Host " << address.host_str() << " unblocked.");
+    return true;
+  }
+  //-----------------------------------------------------------------------------------
   template<class t_payload_net_handler>
   bool node_server<t_payload_net_handler>::block_subnet(const epee::net_utils::ipv4_network_subnet &subnet, time_t seconds)
   {
@@ -811,6 +724,41 @@ std::set<std::string> node_server<t_payload_net_handler>::get_ip_seed_nodes() co
     return true;
   }
 
+  //-----------------------------------------------------------------------------------
+  template<class t_payload_net_handler>
+  std::set<std::string> node_server<t_payload_net_handler>::get_ip_seed_nodes() const
+  {
+    std::set<std::string> full_addrs;
+    if (m_nettype == cryptonote::TESTNET)
+    {
+      full_addrs.insert("51.38.104.157:19890");
+      full_addrs.insert("51.75.84.91:19890");
+      full_addrs.insert("185.250.241.209:19890");
+      full_addrs.insert("93.184.156.45:19890");
+
+    }
+    else if (m_nettype == cryptonote::STAGENET)
+    {
+      full_addrs.insert("51.38.104.157:19890");
+      full_addrs.insert("51.75.84.91:19890");
+      full_addrs.insert("185.250.241.209:19890");
+      full_addrs.insert("93.184.156.45:19890");
+
+    }
+    else if (m_nettype == cryptonote::FAKECHAIN)
+    {
+    }
+    else
+    {
+      full_addrs.insert("51.38.104.157:19890");
+      full_addrs.insert("51.75.84.91:19890");
+      full_addrs.insert("185.250.241.209:19890");
+      full_addrs.insert("93.184.156.45:19890");
+
+    }
+    return full_addrs;
+  }
+  //-----------------------------------------------------------------------------------
   template<class t_payload_net_handler>
   std::set<std::string> node_server<t_payload_net_handler>::get_dns_seed_nodes()
   {
@@ -2100,9 +2048,10 @@ std::set<std::string> node_server<t_payload_net_handler>::get_ip_seed_nodes() co
       return true;
 
     static const std::vector<std::string> dns_urls = {
-      "nox1.noxcoin.online"
-    , "nox2.noxcoin.online"
-    , "nox3.noxcoin.online"
+      "nxc1.noxcoin.online"
+      "nxc2.noxcoin.online"
+    , "nxc3.noxcoin.online"
+    , "nxc4.noxcoin.online"
     };
 
     std::vector<std::string> records;
